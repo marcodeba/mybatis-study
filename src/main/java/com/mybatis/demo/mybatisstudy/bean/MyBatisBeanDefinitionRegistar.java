@@ -1,6 +1,6 @@
 package com.mybatis.demo.mybatisstudy.bean;
 
-import com.mybatis.demo.mybatisstudy.mapper.MybatisMapper;
+import com.mybatis.demo.mybatisstudy.mapper.MyBatisMapper;
 import com.mybatis.demo.mybatisstudy.mapper.UserMapper;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
@@ -16,12 +16,14 @@ public class MyBatisBeanDefinitionRegistar implements ImportBeanDefinitionRegist
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry, BeanNameGenerator importBeanNameGenerator) {
         List<Class> mapperList = new ArrayList<>();
+        mapperList.add(MyBatisMapper.class);
         mapperList.add(UserMapper.class);
-        mapperList.add(MybatisMapper.class);
 
         for (Class mapper : mapperList) {
             AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();
-            beanDefinition.setBeanClass(MybatisFactoryBean.class);
+            // 将 MybatisFactoryBean 放入 IOC 容器
+            beanDefinition.setBeanClass(MyBatisFactoryBean.class);
+            // 添加构造方法参数
             beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(mapper);
 
             registry.registerBeanDefinition(mapper.getName(), beanDefinition);

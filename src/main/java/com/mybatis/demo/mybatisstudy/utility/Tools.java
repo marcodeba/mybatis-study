@@ -1,4 +1,4 @@
-package com.mybatis.demo.mybatisstudy.util;
+package com.mybatis.demo.mybatisstudy.utility;
 
 import sun.misc.ProxyGenerator;
 

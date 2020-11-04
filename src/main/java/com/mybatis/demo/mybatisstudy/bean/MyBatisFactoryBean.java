@@ -5,16 +5,16 @@ import org.springframework.beans.factory.FactoryBean;
 
 import java.lang.reflect.Proxy;
 
-public class MybatisFactoryBean implements FactoryBean {
+public class MyBatisFactoryBean implements FactoryBean {
     private Class mapperInterface;
 
-    public MybatisFactoryBean(Class mapperInterface) {
+    public MyBatisFactoryBean(Class mapperInterface) {
         this.mapperInterface = mapperInterface;
     }
 
     @Override
     public Object getObject() {
-        return Proxy.newProxyInstance(MybatisFactoryBean.class.getClassLoader(), new Class[]{mapperInterface}, new MapperHandler());
+        return Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{mapperInterface}, new MapperHandler());
     }
 
     @Override
