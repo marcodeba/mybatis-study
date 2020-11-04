@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 
 public class MapperHandler implements InvocationHandler {
     private Logger logger = LoggerFactory.getLogger(MapperHandler.class);
+
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) {
         logger.info("connect DB");
