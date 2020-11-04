@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Select;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-public class UserMapperHandler implements InvocationHandler {
+public class MapperHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) {
         System.out.println("connect DB");

@@ -1,6 +1,6 @@
 package com.mybatis.demo.mybatisstudy.bean;
 
-import org.apache.ibatis.annotations.Select;
+import com.mybatis.demo.mybatisstudy.handler.MapperHandler;
 import org.springframework.beans.factory.FactoryBean;
 
 import java.lang.reflect.Proxy;
@@ -14,12 +14,7 @@ public class MybatisFactoryBean implements FactoryBean {
 
     @Override
     public Object getObject() {
-        return Proxy.newProxyInstance(MybatisFactoryBean.class.getClassLoader(), new Class[]{mapperInterface}, (proxy, method, args) -> {
-            System.out.println(method.getName());
-            Select annotation = method.getAnnotation(Select.class);
-            System.out.println(annotation.value()[0]);
-            return null;
-        });
+        return Proxy.newProxyInstance(MybatisFactoryBean.class.getClassLoader(), new Class[]{mapperInterface}, new MapperHandler());
     }
 
     @Override
