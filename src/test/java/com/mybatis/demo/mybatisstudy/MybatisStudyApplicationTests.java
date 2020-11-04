@@ -7,10 +7,19 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.PostConstruct;
+
 @SpringBootTest
 class MybatisStudyApplicationTests {
     @Autowired
-    MybatisService mybatisService;
+    private MybatisService mybatisService;
+
+    private UserMapper userMapper;
+
+    @PostConstruct
+    void init() {
+        userMapper = (UserMapper) UserMapperFactory.getInstance(UserMapper.class);
+    }
 
     @Test
     void testMybatis() {
@@ -19,7 +28,6 @@ class MybatisStudyApplicationTests {
 
     @Test
     void testUserMapper() {
-        UserMapper userMapper = (UserMapper) UserMapperFactory.getInstance(UserMapper.class);
         userMapper.queryUsers();
     }
 }
