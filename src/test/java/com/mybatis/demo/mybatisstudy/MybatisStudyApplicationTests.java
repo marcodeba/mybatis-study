@@ -13,7 +13,6 @@ import javax.annotation.PostConstruct;
 class MybatisStudyApplicationTests {
     @Autowired
     private MybatisService mybatisService;
-
     private UserMapper userMapper;
 
     @PostConstruct
@@ -24,6 +23,7 @@ class MybatisStudyApplicationTests {
     @Test
     void testMybatis() {
         mybatisService.query();
+        userMapper.queryUsers();
     }
 
     @Test

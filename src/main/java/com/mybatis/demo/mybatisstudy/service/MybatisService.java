@@ -1,12 +1,13 @@
 package com.mybatis.demo.mybatisstudy.service;
 
 import com.mybatis.demo.mybatisstudy.mapper.MybatisMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service
 public class MybatisService {
-    @Autowired
+    @Resource
     private MybatisMapper mybatisMapper;
 
     public void query() {
