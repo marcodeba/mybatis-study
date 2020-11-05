@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 
 @SpringBootTest
 @Import(MyBatisBeanDefinitionRegistar.class)
+//@MapperScan("com.mybatis.demo.mybatisstudy.mapper")
 class MybatisStudyApplicationTests {
     @Resource
     private MybatisService mybatisService;
