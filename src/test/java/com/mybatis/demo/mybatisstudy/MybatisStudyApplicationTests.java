@@ -4,6 +4,7 @@ import com.mybatis.demo.mybatisstudy.bean.MyBatisBeanDefinitionRegistar;
 import com.mybatis.demo.mybatisstudy.mapper.UserMapper;
 import com.mybatis.demo.mybatisstudy.service.MybatisService;
 import org.junit.jupiter.api.Test;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
