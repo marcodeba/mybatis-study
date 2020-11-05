@@ -19,6 +19,7 @@ public class MyBatisBeanDefinitionRegistar implements ImportBeanDefinitionRegist
         mapperList.add(MyBatisMapper.class);
         mapperList.add(UserMapper.class);
 
+        // 把MyBatis生成的Mapper代理对象放到IOC容器中
         for (Class mapper : mapperList) {
             AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();
             // 将 MybatisFactoryBean 放入 IOC 容器
