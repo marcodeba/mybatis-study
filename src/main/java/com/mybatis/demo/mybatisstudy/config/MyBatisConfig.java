@@ -18,6 +18,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @MyBatisMapperScan("com.mybatis.demo.mybatisstudy.mapper")
+@Import(MyBatisBeanDefinitionRegistar.class)
 public class MyBatisConfig {
 
     @Bean

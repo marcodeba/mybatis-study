@@ -1,7 +1,7 @@
 package com.mybatis.demo.mybatisstudy;
 
+import com.mybatis.demo.mybatisstudy.mapper.MyBatisMapper;
 import com.mybatis.demo.mybatisstudy.mapper.UserMapper;
-import com.mybatis.demo.mybatisstudy.service.MybatisService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -11,14 +11,14 @@ import javax.annotation.Resource;
 class MybatisStudyApplicationTests {
 
     @Resource
-    private MybatisService mybatisService;
+    private UserMapper userMapper;
 
     @Resource
-    private UserMapper userMapper;
+    private MyBatisMapper mybatisMapper;
 
     @Test
     void testMybatis() {
-        mybatisService.query();
-        userMapper.queryUsers();
+        System.out.println(mybatisMapper.query());
+        System.out.println(userMapper.queryUsers());
     }
 }

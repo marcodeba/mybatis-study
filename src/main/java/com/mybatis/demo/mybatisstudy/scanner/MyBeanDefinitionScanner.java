@@ -16,6 +16,7 @@ import java.util.Set;
  * @date 2021年10月01日 12:01 上午
  */
 public class MyBeanDefinitionScanner extends ClassPathBeanDefinitionScanner {
+
     public MyBeanDefinitionScanner(BeanDefinitionRegistry registry) {
         super(registry);
     }
@@ -34,11 +35,11 @@ public class MyBeanDefinitionScanner extends ClassPathBeanDefinitionScanner {
     protected Set<BeanDefinitionHolder> doScan(String... basePackages) {
         Set<BeanDefinitionHolder> beanDefinitionHolders = super.doScan(basePackages);
 
-        beanDefinitionHolders.forEach(beanDefinitionHolder -> {
+        for (BeanDefinitionHolder beanDefinitionHolder : beanDefinitionHolders) {
             BeanDefinition beanDefinition = beanDefinitionHolder.getBeanDefinition();
             beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(beanDefinition.getBeanClassName());
             beanDefinition.setBeanClassName(MyBatisFactoryBean.class.getName());
-        });
+        }
         return beanDefinitionHolders;
     }
 }
