@@ -1,14 +1,24 @@
 package com.mybatis.demo.mybatisstudy.config;
 
+import com.mybatis.demo.mybatisstudy.annotation.MyBatisMapperScan;
+import com.mybatis.demo.mybatisstudy.registar.MyBatisBeanDefinitionRegistar;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
+/**
+ * @author marco pan
+ * @ClassName MyBatisConfiguration
+ * @Description 应用配置类
+ * @date 2021年09月30日 11:47 下午
+ */
 @Configuration
-public class MyBatisConfiguration {
+@MyBatisMapperScan("com.mybatis.demo.mybatisstudy.mapper")
+public class MyBatisConfig {
 
     @Bean
     public SqlSessionFactoryBean sqlSessionFactory() {
@@ -20,7 +30,7 @@ public class MyBatisConfiguration {
     @Bean
     public DataSource datasource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/test");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mydatabase");
         dataSource.setUsername("root");
         dataSource.setPassword("12345678");
         return dataSource;

@@ -1,20 +1,29 @@
 package com.mybatis.demo.mybatisstudy.bean;
 
-import com.mybatis.demo.mybatisstudy.handler.MapperHandler;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.FactoryBean;
-
-import java.lang.reflect.Proxy;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class MyBatisFactoryBean implements FactoryBean {
+
     private Class mapperInterface;
+    private SqlSession sqlSession;
 
     public MyBatisFactoryBean(Class mapperInterface) {
         this.mapperInterface = mapperInterface;
     }
 
+    @Autowired
+    public void setSqlSession(SqlSessionFactory sqlSessionFactory) {
+        sqlSessionFactory.getConfiguration().addMapper(mapperInterface);
+        this.sqlSession = sqlSessionFactory.openSession();
+    }
+
     @Override
     public Object getObject() {
-        return Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{mapperInterface}, new MapperHandler());
+        return sqlSession.getMapper(mapperInterface);
+        //return Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{mapperInterface}, new MapperHandler());
     }
 
     @Override
