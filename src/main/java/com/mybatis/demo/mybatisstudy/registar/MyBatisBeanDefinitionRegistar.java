@@ -1,23 +1,12 @@
 package com.mybatis.demo.mybatisstudy.registar;
 
 import com.mybatis.demo.mybatisstudy.annotation.MyBatisMapperScan;
-import com.mybatis.demo.mybatisstudy.bean.MyBatisFactoryBean;
-import com.mybatis.demo.mybatisstudy.mapper.MyBatisMapper;
-import com.mybatis.demo.mybatisstudy.mapper.UserMapper;
-import com.mybatis.demo.mybatisstudy.scanner.MyBeanDefinitionScanner;
-import org.springframework.beans.factory.support.AbstractBeanDefinition;
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import com.mybatis.demo.mybatisstudy.scanner.MyBatisBeanDefinitionScanner;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanNameGenerator;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.type.AnnotationMetadata;
-import org.springframework.core.type.classreading.MetadataReader;
-import org.springframework.core.type.classreading.MetadataReaderFactory;
-import org.springframework.core.type.filter.TypeFilter;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class MyBatisBeanDefinitionRegistar implements ImportBeanDefinitionRegistrar {
@@ -27,7 +16,7 @@ public class MyBatisBeanDefinitionRegistar implements ImportBeanDefinitionRegist
         System.out.println(annotationAttributes);
         String path = (String) annotationAttributes.get("value");
 
-        MyBeanDefinitionScanner scanner = new MyBeanDefinitionScanner(registry);
+        MyBatisBeanDefinitionScanner scanner = new MyBatisBeanDefinitionScanner(registry);
         scanner.addIncludeFilter((metadataReader, metadataReaderFactory) -> true);
         scanner.scan(path);
 

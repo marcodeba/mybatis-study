@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface MyBatisMapper {
-    @Select("select 'mybatis'")
+public interface OrderMapper {
+    @Select("select 'order'")
     String query();
 }

@@ -1,7 +1,7 @@
 package com.mybatis.demo.mybatisstudy.service.impl;
 
-import com.mybatis.demo.mybatisstudy.mapper.MyBatisMapper;
-import com.mybatis.demo.mybatisstudy.service.MyBatisService;
+import com.mybatis.demo.mybatisstudy.mapper.OrderMapper;
+import com.mybatis.demo.mybatisstudy.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,16 +12,16 @@ import org.springframework.stereotype.Service;
  * @date 2021年10月01日 10:26 上午
  */
 @Service
-public class MyBatisServiceImpl implements MyBatisService {
-    private MyBatisMapper myBatisMapper;
+public class OrderServiceImpl implements OrderService {
+    private OrderMapper orderMapper;
 
     @Autowired
-    public void setMyBatisMapper(MyBatisMapper myBatisMapper) {
-        this.myBatisMapper = myBatisMapper;
+    public void setMyBatisMapper(OrderMapper orderMapper) {
+        this.orderMapper = orderMapper;
     }
 
     @Override
     public String queryDataFromDB() {
-        return myBatisMapper.query();
+        return orderMapper.query();
     }
 }

@@ -1,5 +1,5 @@
 package com.mybatis.demo.mybatisstudy.service;
 
-public interface MyBatisService {
+public interface OrderService {
     String queryDataFromDB();
 }

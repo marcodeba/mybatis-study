@@ -1,6 +1,6 @@
 package com.mybatis.demo.mybatisstudy;
 
-import com.mybatis.demo.mybatisstudy.service.MyBatisService;
+import com.mybatis.demo.mybatisstudy.service.OrderService;
 import com.mybatis.demo.mybatisstudy.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +12,11 @@ class MybatisStudyApplicationTests {
     private UserService userService;
 
     @Autowired
-    private MyBatisService myBatisService;
+    private OrderService orderService;
 
     @Test
     void testMybatis() {
         System.out.println(userService.createOrder());
-        System.out.println(myBatisService.queryDataFromDB());
+        System.out.println(orderService.queryDataFromDB());
     }
 }

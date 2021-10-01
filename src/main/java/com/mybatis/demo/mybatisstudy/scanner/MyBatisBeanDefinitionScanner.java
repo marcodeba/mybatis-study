@@ -15,16 +15,16 @@ import java.util.Set;
  * @Description
  * @date 2021年10月01日 12:01 上午
  */
-public class MyBeanDefinitionScanner extends ClassPathBeanDefinitionScanner {
+public class MyBatisBeanDefinitionScanner extends ClassPathBeanDefinitionScanner {
 
-    public MyBeanDefinitionScanner(BeanDefinitionRegistry registry) {
+    public MyBatisBeanDefinitionScanner(BeanDefinitionRegistry registry) {
         super(registry);
     }
 
     /**
      * MyBatis扫描的mapper都是接口，所以要重写该方法，因为Spring默认的扫描器只扫描类
-     * @param beanDefinition
-     * @return
+     * @param beanDefinition 扫描到的对象是否可以作为Bean放入容器
+     * @return true or false
      */
     @Override
     protected boolean isCandidateComponent(AnnotatedBeanDefinition beanDefinition) {
