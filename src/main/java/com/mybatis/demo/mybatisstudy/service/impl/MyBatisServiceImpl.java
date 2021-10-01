@@ -13,8 +13,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MyBatisServiceImpl implements MyBatisService {
-    @Autowired
     private MyBatisMapper myBatisMapper;
+
+    @Autowired
+    public void setMyBatisMapper(MyBatisMapper myBatisMapper) {
+        this.myBatisMapper = myBatisMapper;
+    }
 
     @Override
     public String queryDataFromDB() {
