@@ -1,24 +1,22 @@
 package com.mybatis.demo.mybatisstudy;
 
-import com.mybatis.demo.mybatisstudy.mapper.MyBatisMapper;
-import com.mybatis.demo.mybatisstudy.mapper.UserMapper;
+import com.mybatis.demo.mybatisstudy.service.MyBatisService;
+import com.mybatis.demo.mybatisstudy.service.UserService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.annotation.Resource;
 
 @SpringBootTest
 class MybatisStudyApplicationTests {
+    @Autowired
+    private UserService userService;
 
-    @Resource
-    private UserMapper userMapper;
-
-    @Resource
-    private MyBatisMapper mybatisMapper;
+    @Autowired
+    private MyBatisService myBatisService;
 
     @Test
     void testMybatis() {
-        System.out.println(mybatisMapper.query());
-        System.out.println(userMapper.queryUsers());
+        System.out.println(userService.createOrder());
+        System.out.println(myBatisService.queryDataFromDB());
     }
 }
