@@ -17,20 +17,10 @@ public class MyBatisBeanDefinitionRegistar implements ImportBeanDefinitionRegist
         String path = (String) annotationAttributes.get("value");
 
         MyBatisBeanDefinitionScanner scanner = new MyBatisBeanDefinitionScanner(registry);
+        /**
+         * 设置扫描器，让mapper能够被scanner扫描到
+         */
         scanner.addIncludeFilter((metadataReader, metadataReaderFactory) -> true);
         scanner.scan(path);
-
-//        List<Class> mapperList = new ArrayList<>();
-//        mapperList.add(MyBatisMapper.class);
-//        mapperList.add(UserMapper.class);
-//
-//        // 把MyBatis生成的Mapper代理对象放到IOC容器中
-//        for (Class mapper : mapperList) {
-//            AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();
-//            beanDefinition.setBeanClass(MyBatisFactoryBean.class);
-//            // 添加构造方法参数
-//            beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(mapper);
-//            registry.registerBeanDefinition(mapper.getName(), beanDefinition);
-//        }
     }
 }
