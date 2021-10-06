@@ -17,6 +17,7 @@ import javax.sql.DataSource;
  * @date 2021年09月30日 11:47 下午
  */
 @Configuration
+//@MapperScan("com.mybatis.demo.mybatisstudy.mapper")
 @MyBatisMapperScan("com.mybatis.demo.mybatisstudy.mapper")
 @Import(MyBatisBeanDefinitionRegistar.class)
 public class MyBatisConfig {

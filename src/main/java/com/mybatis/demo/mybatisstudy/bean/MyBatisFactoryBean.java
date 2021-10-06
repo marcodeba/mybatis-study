@@ -15,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MyBatisFactoryBean implements FactoryBean {
     private Logger logger = LoggerFactory.getLogger(MyBatisFactoryBean.class);
+    /**
+     * 实际上传进来的是mapper接口
+     */
     private Class mapperInterface;
     private SqlSession sqlSession;
 
@@ -30,6 +33,9 @@ public class MyBatisFactoryBean implements FactoryBean {
 
     @Override
     public Object getObject() {
+        /**
+         * MyBatis为mapper生成的代理对象
+         */
         return sqlSession.getMapper(mapperInterface);
 //        return Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{mapperInterface}, new InvocationHandler() {
 //            @Override

@@ -37,6 +37,7 @@ public class MyBatisBeanDefinitionScanner extends ClassPathBeanDefinitionScanner
 
         for (BeanDefinitionHolder beanDefinitionHolder : beanDefinitionHolders) {
             BeanDefinition beanDefinition = beanDefinitionHolder.getBeanDefinition();
+            // 设置FactoryBean的构造函数入参
             beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(beanDefinition.getBeanClassName());
             beanDefinition.setBeanClassName(MyBatisFactoryBean.class.getName());
         }
