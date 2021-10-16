@@ -33,9 +33,7 @@ public class MyBatisFactoryBean implements FactoryBean {
 
     @Override
     public Object getObject() {
-        /**
-         * MyBatis为mapper生成的代理对象
-         */
+        // 返回MyBatis为mapper接口生成的代理对象
         return sqlSession.getMapper(mapperInterface);
 //        return Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{mapperInterface}, new InvocationHandler() {
 //            @Override
