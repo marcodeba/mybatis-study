@@ -13,14 +13,11 @@ public class MyBatisBeanDefinitionRegistar implements ImportBeanDefinitionRegist
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry, BeanNameGenerator importBeanNameGenerator) {
         Map<String, Object> annotationAttributes = importingClassMetadata.getAnnotationAttributes(MyBatisMapperScan.class.getName());
-        System.out.println(annotationAttributes);
-        String scanPath = (String) annotationAttributes.get("value");
-
         MyBatisBeanDefinitionScanner scanner = new MyBatisBeanDefinitionScanner(registry);
         /**
-         * 设置扫描器，让mapper能够被scanner扫描到
+         * 设置扫描器，让mapper能够被scanner扫描到(Spring默认只会扫描到带有@Component的类)
          */
         scanner.addIncludeFilter((metadataReader, metadataReaderFactory) -> true);
-        scanner.scan(scanPath);
+        scanner.scan((String) annotationAttributes.get("value"));
     }
 }
